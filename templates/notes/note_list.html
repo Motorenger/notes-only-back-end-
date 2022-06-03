@@ -1,0 +1,16 @@
+{% load account %}
+{% load socialaccount %}
+
+    <p style="text-align: right;">{%user_display user%}</p>
+    <p style="text-align: right;"><a href="{% url 'account_logout' %}">Log out</a></p>
+    <h3><a href="{% url 'notes:note_create' %} ">Add note +</a></h3>
+                    {% for note in all_users_notes %}
+                    <p>
+                        <td>
+                            <li>{{note.note_text}}</li>
+                            {{note.day_planned}}
+                            <a href="{% url 'notes:note_update' note.id %}">Edit</a>
+                            <a href="{% url 'notes:note_delete' note.id %}">Delete</a>
+                        </td>
+                    </p>
+            {% endfor %}
